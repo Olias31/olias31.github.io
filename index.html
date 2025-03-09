@@ -100,24 +100,67 @@
       line-height: 1.6;
     }
 
-    /* Header */
-    .site-header {
-      background-color: var(--primary);
-      color: white;
-      padding: var(--spacing-md) var(--spacing-lg);
-      text-align: center;
-      box-shadow: 0 2px 4px var(--shadow);
-    }
-    
-    .site-header h1 {
-      font-size: var(--font-size-xlarge);
-      margin: 0;
-    }
-    
-    .site-header p {
-      font-size: var(--font-size-regular);
-      opacity: 0.9;
-    }
+   /* Styles pour le header avec logo */
+.site-header {
+  background-color: var(--primary);
+  color: white;
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: center;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.header-text h1 {
+  font-size: var(--font-size-xlarge);
+  margin: 0;
+}
+
+.header-text p {
+  font-size: var(--font-size-regular);
+  opacity: 0.9;
+}
+
+/* Media queries pour rendre le header responsive */
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-logo {
+    margin-right: var(--spacing-lg);
+    margin-bottom: 0;
+  }
+  
+  .header-text {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+    max-width: 200px;
+  }
+}
 
     /* Disposition globale */
     .container {
@@ -821,11 +864,16 @@
   </style>
 </head>
 <body>
-  <!-- Header du site -->
-  <header class="site-header">
-    <h1>Annonces de La Cagette Pirate</h1>
-    <p>Découvrez les événements et informations partagés par la communauté</p>
-  </header>
+<!-- Header du site avec logo ajouté -->
+<header class="site-header">
+  <div class="header-content">
+    <img src="https://lacagette-coop.fr/files/CagettePirate_logo_pirate_longpng_20241004204418_20241004204514.png" alt="Logo La Cagette Pirate" class="header-logo">
+    <div class="header-text">
+      <h1>Annonces de La Cagette Pirate</h1>
+      <p>Découvrez les événements et informations partagés par la communauté</p>
+    </div>
+  </div>
+</header>
 
   <div class="container">
     <!-- Barre latérale -->
