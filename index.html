@@ -100,10 +100,10 @@
       line-height: 1.6;
     }
 
-   /* Styles pour le header avec logo */
+/* Styles pour le header avec logo - Fond blanc et texte noir */
 .site-header {
-  background-color: var(--primary);
-  color: white;
+  background-color: white;
+  color: var(--text-primary);
   padding: var(--spacing-md) var(--spacing-lg);
   text-align: center;
   box-shadow: 0 2px 4px var(--shadow);
@@ -125,11 +125,13 @@
 .header-text h1 {
   font-size: var(--font-size-xlarge);
   margin: 0;
+  color: var(--text-primary);
 }
 
 .header-text p {
   font-size: var(--font-size-regular);
   opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 /* Media queries pour rendre le header responsive */
@@ -161,7 +163,6 @@
     max-width: 200px;
   }
 }
-
     /* Disposition globale */
     .container {
       display: flex;
