@@ -777,7 +777,54 @@
     .comment-content {
       font-size: var(--font-size-regular);
     }
-    
+    /* Styles pour la section À propos */
+.about-section {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.about-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
+  font-size: var(--font-size-regular);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.about-button:hover {
+  background-color: rgba(46, 125, 50, 0.1);
+  transform: translateY(-2px);
+}
+
+.about-button i {
+  margin-right: var(--spacing-sm);
+}
+
+/* Styles pour le modal À propos */
+.about-modal .modal-content {
+  max-width: 700px;
+}
+
+.about-modal .modal-body {
+  padding: var(--spacing-xl);
+  line-height: 1.8;
+}
+
+.about-title {
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-text p {
+  margin-bottom: var(--spacing-md);
+}
     /* Menu hamburger mobile */
     .mobile-menu-toggle {
       display: none;
@@ -924,6 +971,13 @@
 		  <button class="sort-button" id="sortByLikesBtn"><i class="fas fa-heart"></i> Likes</button>
         </div>
       </div>
+	<!-- Lien À propos à ajouter dans la sidebar -->
+	<div class="separator"></div>
+	<div class="about-section">
+	  <button id="aboutButton" class="about-button">
+	    <i class="fas fa-info-circle"></i> À propos de la Cagette Pirate
+	  </button>
+	</div>
     </div>
     
     <!-- Contenu principal -->
@@ -943,6 +997,39 @@
   <div class="mobile-menu-toggle" id="mobileMenuToggle">
     <i class="fas fa-bars"></i>
   </div>
+
+	<!-- Modal À propos -->
+<div id="aboutModal" class="modal about-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">À propos de la Cagette Pirate</h2>
+      <span class="close" id="closeAboutModal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="about-text">
+        <!-- Vous pourrez remplacer ce contenu par votre propre texte de présentation -->
+        <h3 class="about-title">Qui sommes-nous ?</h3>
+        <p>
+          La Cagette Pirate est une initiative collective de membres de La Cagette, supermarché coopératif et participatif de Montpellier. Nous portons une vision d'échange et de partage d'informations au sein de notre communauté.
+        </p>
+        
+        <h3 class="about-title">Notre mission</h3>
+        <p>
+          Nous souhaitons créer un espace d'expression libre permettant aux coopérateurs de partager des événements, des opinions, des recettes et d'autres informations pertinentes pour notre communauté, dans un esprit de dialogue constructif et respectueux.
+        </p>
+        
+        <h3 class="about-title">Comment participer ?</h3>
+        <p>
+          Tous les membres de La Cagette peuvent soumettre une annonce en utilisant le formulaire disponible sur le site. Les contributions sont modérées par un collectif bénévole pour garantir le respect de notre charte.
+        </p>
+        
+        <p>
+          <em>Note : La Cagette Pirate est une initiative indépendante et n'engage pas officiellement La Cagette, supermarché coopératif et participatif de Montpellier.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
   
   <!-- Modal -->
   <div id="modal" class="modal">
@@ -1833,6 +1920,37 @@ function filterAnnonces() {
         }
       });
     });
+
+	  // Gestion du modal À propos
+const aboutButton = document.getElementById('aboutButton');
+const aboutModal = document.getElementById('aboutModal');
+const closeAboutModal = document.getElementById('closeAboutModal');
+
+// Ouvrir le modal
+aboutButton.addEventListener('click', () => {
+  aboutModal.style.display = 'block';
+  setTimeout(() => {
+    aboutModal.classList.add('active');
+  }, 10);
+});
+
+// Fermer le modal en cliquant sur la croix
+closeAboutModal.addEventListener('click', () => {
+  aboutModal.classList.remove('active');
+  setTimeout(() => {
+    aboutModal.style.display = 'none';
+  }, 300);
+});
+
+// Fermer le modal en cliquant en dehors du contenu
+window.addEventListener('click', (event) => {
+  if (event.target === aboutModal) {
+    aboutModal.classList.remove('active');
+    setTimeout(() => {
+      aboutModal.style.display = 'none';
+    }, 300);
+  }
+});
     
     // Initialiser l'application au chargement
     document.addEventListener('DOMContentLoaded', () => {
